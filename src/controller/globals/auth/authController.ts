@@ -7,9 +7,9 @@ import jwt from 'jsonwebtoken'
 class AuthController {
   static async registerUser(req: Request, res: Response) {
     try {
-      if (!req.body) {
+      if (req.body==undefined) {
         res.status(400).json({
-          msg: "Request body not found"
+          msg: "No data was sent!"
         })
         return
 
