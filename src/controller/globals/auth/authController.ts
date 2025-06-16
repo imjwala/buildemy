@@ -2,6 +2,7 @@ import { Request, Response } from 'express'
 import bcrypt from 'bcrypt'
 import User from '../../../database/models/userModel'
 import jwt from 'jsonwebtoken'
+import { envConfig } from '../../../config/config'
 
 
 class AuthController {
@@ -74,8 +75,11 @@ class AuthController {
         return
       }
       const isPasswordMatch = await bcrypt.compare(password, data[0].password)
+      const secretKey = envConfig.jwt_key
+      console.log(secretKey)
+      
       if (isPasswordMatch) {
-        const token = jwt.sign({id:data[0].id},"thisissecret",{
+        const token = jwt.sign({id:data[0].id},secretKey,{
           expiresIn:"30d"
         })
         res.status(200).json({

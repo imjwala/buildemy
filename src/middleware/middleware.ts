@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import jwt from 'jsonwebtoken'
 import User from "../database/models/userModel";
 import { IExtendedRequest } from "./type";
+import { envConfig } from "../config/config";
 
 
 
@@ -19,7 +20,8 @@ class Middleware {
       return
     }
     //verify token
-    jwt.verify(token, 'thisissecret', async (error, result: any) => {
+    const secretKey = envConfig.jwt_key
+    jwt.verify(token,secretKey, async (error: any, result: any) => {
       if (error) {
         res.status(401).json({
           msg: "Token invalid"
@@ -40,8 +42,6 @@ class Middleware {
 
 
   }
-  // static restrictTo(req:Request,res:Response,next:NextFunction){
-
-  // }
+ 
 }
 export default Middleware
