@@ -34,5 +34,10 @@ import {Table, Column, Model,DataType,} from 'sequelize-typescript'
     })
     declare role: string
 
+    @Column({
+      type: DataType.STRING
+    })
+    declare currentInstituteNumber : string
+
   }
   export default User

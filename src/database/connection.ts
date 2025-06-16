@@ -20,7 +20,7 @@ sequelize.authenticate()
     console.log(err)
   })
 
-sequelize.sync({ alter: true })
+sequelize.sync({ alter: false })
   .then(() => {
     console.log("Migration successfull")
   })
