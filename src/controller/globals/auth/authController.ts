@@ -76,7 +76,6 @@ class AuthController {
       }
       const isPasswordMatch = await bcrypt.compare(password, data[0].password)
       const secretKey = envConfig.jwt_key
-      console.log(secretKey)
       
       if (isPasswordMatch) {
         const token = jwt.sign({id:data[0].id},secretKey,{
