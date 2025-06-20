@@ -1,5 +1,6 @@
 import {config} from 'dotenv'
-import { STRING } from 'sequelize'
+import { cloudinary } from '../services/cloudinaryConfig'
+
 config()
 
 export const envConfig = {
@@ -10,5 +11,8 @@ export const envConfig = {
 
   db_host:process.env.DB_HOST,
   db_port:Number(process.env.DB_PORT),
-  jwt_key:process.env.JWT_KEY||''
+  jwt_key:process.env.JWT_KEY||'',
+  cloudinary_cloud_name:process.env.CLOUDINARY_CLOUD_NAME,
+  cloudinary_api_key:process.env.CLOUDINARY_API_KEY,
+  cloudinary_api_secret:process.env.CLOUDINARY_API_SECRET
 }

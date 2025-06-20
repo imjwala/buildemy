@@ -45,7 +45,8 @@ class AuthController {
       })
     } catch (err) {
       res.status(500).json({
-        Error: "Internal server error"
+        Msg:"Internal server error",
+        Error: err
       })
     }
   }
@@ -95,9 +96,9 @@ class AuthController {
       }
     } catch (err) {
       res.status(500).json({
-        Error: "Internal server error"
+        Error: "Internal server error" 
       })
-    }
+    } 
 
   }
 }

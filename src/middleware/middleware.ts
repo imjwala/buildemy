@@ -27,7 +27,9 @@ class Middleware {
           msg: "Token invalid"
         })
       } else {
-        const userData = await User.findByPk(result.id)
+        const userData = await User.findByPk(result.id,{
+          attributes:['id','currentInstituteNumber']
+        })
         if (!userData) {
           res.status(403).json({
             msg: "No user with that id, invalid token"
