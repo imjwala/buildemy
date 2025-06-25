@@ -3,6 +3,7 @@ import bcrypt from 'bcrypt'
 import User from '../../../database/models/userModel'
 import jwt from 'jsonwebtoken'
 import { envConfig } from '../../../config/config'
+import generateJWTToken from '../../../services/generateJwtToken'
 
 
 class AuthController {
@@ -79,9 +80,7 @@ class AuthController {
       const secretKey = envConfig.jwt_key
       
       if (isPasswordMatch) {
-        const token = jwt.sign({id:data[0].id},secretKey,{
-          expiresIn:"30d"
-        })
+        const token = generateJWTToken({id:data[0].id})
         res.status(200).json({
          token:token,
          msg:"Token created successfully"
