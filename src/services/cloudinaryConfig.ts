@@ -10,7 +10,7 @@ cloudinary.config({
 
 const storage = new CloudinaryStorage({
         cloudinary,
-        params:async(req,res)=>({
+        params:async(req,file)=>({
                 folder:"buildemy"
         })
 })

@@ -1,4 +1,7 @@
 import app from "./src/app"
+2222
+import 'reflect-metadata';
+
 import { envConfig } from "./src/config/config"
 
 import "./src/database/connection"
